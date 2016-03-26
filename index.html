@@ -1,0 +1,247 @@
+<!--
+	index.html
+	Part of the Yang Canvas Paint Application
+	By Joey Lemberg, joeylemberg@gmail.com
+	January 29, 2014
+	copyright Yang Canvas LLC, all rights reserved
+-->
+
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>YinYangPaint 阴阳画</title>
+<link rel="SHORTCUT ICON" href="img/yinyang.png">
+
+<head>
+	<!--CSS Stylesheets-->
+	<link rel="stylesheet" href="css/menus.css" />
+	<link rel="stylesheet" href="css/main.css" />
+	
+	<!--Libraries Found on the Web-->
+	<script src='js/lib/jquery-2.0.2.min.js'></script>
+	<script src='js/lib/jquery-ui-1.10.1.custom.min.js'></script>
+	<script src='js/lib/jscolor/jscolor.js'></script>
+	<!--my main js files-->
+	<script src='js/main/Config.js'></script>
+	<script src='js/main/Menus.js'></script>
+	<script src='js/main/Yang.js'></script>
+	<script src='js/main/Util.js'></script>
+	<script src='js/main/History.js'></script>
+		<script src='js/main/Pic.js'></script>
+        <script src='js/main/Browsers.js'></script>
+        <script src='js/main/Main.js'></script>
+		<script src='js/main/Sliders.js'></script>
+		<script src='js/main/Input.js'></script>
+		<script src='js/main/ContextMenu.js'></script>
+		<script src='js/main/Clipboard.js'></script>
+		<script src='js/main/UserBox.js'></script>
+		<script src='js/main/Helper.js'></script>
+	
+	<!-- Tools -->
+	<script src='js/tools/_tools.js'></script>
+	<script src='js/tools/filters.js'></script>
+	<script src='js/tools/size.js'></script>
+	<script src='js/tools/upload.js'></script>
+	<script src='js/tools/pencil.js'></script>
+	<script src='js/tools/brush.js'></script>
+	<script src='js/tools/eraser.js'></script>
+	<script src='js/tools/text.js'></script>
+	<script src='js/tools/selector.js'></script>
+	<script src='js/tools/smudge.js'></script>
+	<script src='js/tools/magicwand.js'></script>
+	<script src='js/tools/dropper.js'></script>
+	<script src='js/tools/zoom.js'></script>
+	<script src='js/tools/grabber.js'></script>
+	<script src='js/tools/undoredo.js'></script>
+	<script src='js/tools/file.js'></script>
+	<script src='js/tools/layers.js'></script>
+	<script src='js/tools/about.js'></script>
+	<script src='js/tools/settings.js'></script>
+	<script src='js/tools/clipboard.js'></script>
+		
+	<!--<script src='all.js'></script>-->
+	<style>
+		body{margin:0px;font-family:verdana;cursor:none;background-color:#777777;}
+		#biggest_div{position:relative;width:100%;height:100%;overflow:hidden;}
+	</style>
+	
+</head>
+
+<body>
+	<div id="busy_cover" style='position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.8);display:none;z-index:9999999;'>
+		
+		<div style='color:white;font-size:24px;width:50%;margin:15%;padding:40px;'><canvas id="loading_spinner" width="30" height="30" style="position: relative;left: -10px;top: 8px;"></canvas><span id="busy_text"></span></div>
+	</div>
+	
+	<div id="biggest_div">
+		
+		<div id="user_account_div" style='position:fixed;top:-170px;right:-250px;z-index:90;width:400px;'>
+			<canvas class='canvas_menu' id='user_menu' width='300' height='200' style="display:none;"></canvas>
+		</div>
+		
+		
+		
+		<canvas id='cursor_canvas' width='40' height='30' style='position:absolute;z-index:3;' unselectable='on'></canvas> 
+		
+		
+		
+		<div id='picture' style='position:absolute;background-color:#ffffff;z-index:2;top:95px;left:120px;'>
+				<canvas id='top_canvas' width='1200' height='800' style="z-index:1;"></canvas>
+		</div>
+		<div id='picture_shadow' style='position:absolute;background-color:rgba(0,0,0,0.2);z-index:1;top:95px;left:120px;'></div>
+		
+		<canvas id="y_units_canvas" width="50" height="20" style="position:absolute;"></canvas>
+		<canvas id="x_units_canvas" width="20" height="20" style="position:absolute;"></canvas>
+		
+		<canvas class='canvas_menu' id='file_menu' width='134' height='62'></canvas>
+			
+		<canvas class='canvas_menu' id='view_menu' width='144' height='50'></canvas>
+			<div id='view_submenu' class='perma_menu'></div>
+			
+		<canvas class='canvas_menu' id='settings_menu' width='74' height='42'></canvas>
+		
+		<canvas class='canvas_menu' id='filters_menu' width='44' height='42'></canvas>
+		
+		<canvas class='canvas_menu' id='title_menu' width='217' height='77'></canvas>
+		
+		
+			<canvas class='canvas_menu' id='pic_size_menu' width='42' height='44'></canvas>
+			<div id='size_submenu' class='submenu'></div>
+		
+		
+		<canvas class='canvas_menu' id='paint_menu' width='42' height='104'></canvas>
+			<div id='pencil_submenu' class='submenu'></div>
+			<div id='brush_submenu' class='submenu'></div>
+			<div id='eraser_submenu' class='submenu'></div>
+			
+		<canvas class='canvas_menu' id='text_menu' width='42' height='44'></canvas>
+			<div id='text_submenu' class='submenu'></div>
+			
+		<canvas class='canvas_menu' id='selector_menu' width='42' height='164'></canvas>
+		<div id='smudge_submenu' class='submenu'></div>
+		<div id='dropper_submenu' class='submenu'></div>
+		
+		<canvas class='canvas_menu' id='history_menu' width='160' height='200'></canvas>
+		
+		<canvas class='canvas_menu' id='layer_menu' width='160' height='226'></canvas>
+		<div id='layer_list'></div>
+		
+		<canvas class='canvas_menu' id='clipboard_menu' width='340' height='120'></canvas>
+		<div id='clipboard_list'></div>
+
+		
+		<canvas id="copyright_canvas" height="25" width="310"></canvas>
+		
+		<div id='context_menu'>
+			<div id='context_copy' class='context_menu_item'>copy</div>
+			<div id='context_paste' class='context_menu_item'>paste</div>
+			<div id='context_cut' class='context_menu_item'>cut</div>
+			<div id='context_delete' class='context_menu_item'>delete</div>
+			<div class='context_bar'></div>
+			<!--<div id='context_flipx' class='context_menu_item'>Flip Horizontal</div>
+			<div id='context_flipy' class='context_menu_item'>Flip Vertical</div>-->
+		</div>
+		
+		<canvas id='hover-text-canvas' width='210' height='50' style='position:absolute;display:none;z-index:1000;'></canvas>
+		
+		<canvas id='helper-text-canvas' class='helper-text no-pointers' width='600' height='200' style='position:absolute;z-index:999;top:145px;left:190px;display:none;'></canvas>
+		<div id='helper-text-button-1' class='helper-text-button helper-text' style='position:absolute;z-index:1999;top:133px;left:198px;display:none;'>close message</div>
+		<div id='helper-text-button-2' class='helper-text-button helper-text' style='position:absolute;z-index:1999;top:133px;left:278px;display:none;'>disable helper messages</div>
+		<img>
+		
+		<div id="helper-arrow" class="helper-text no-pointers" style="position:fixed;top:140px;left:100px;z-index:900;display:none;">
+		<div id="animated-example" class="animated bounce"><img src="img/arrow.png" /></div>
+	</div>
+		
+	</div>
+
+	
+</body>
+
+<script type='text/javascript'>
+
+var isMac = false;
+if (navigator.appVersion.indexOf("Mac")!=-1) isMac=true;
+var pxRatio = 1;
+var isRetina = false;
+var scaleUp = function(that){
+	var w = $(that).attr("width");
+	var h = $(that).attr("height");
+	var ctx = that.getContext("2d")
+	$(that).css("width", w + "px");
+	$(that).css("height", h + "px");
+	$(that).attr("width", w*pxRatio);
+	$(that).attr("height", h*pxRatio);
+	that.getContext("2d").scale(pxRatio,pxRatio);
+	ctx.lineJoin = "round";
+}
+
+$(document).ready(function(){
+	
+	pxRatio = Math.round(window.devicePixelRatio);
+	if(pxRatio > 1){
+		isRetina = true;
+	}
+	if(isRetina){
+		$(".canvas_menu, #copyright_canvas, #cursor_canvas, #hover-text-canvas, #helper-text-canvas, #helper-text-canvas-arrow").each(function(){
+			scaleUp(this);
+		});
+	}
+	
+	
+	Clipboard.init();
+	
+	Menus.init();
+	
+	Util.loadingCtx = $("#loading_spinner")[0].getContext("2d");
+	Util.loadingCtx.translate(15,15);
+	
+	Main.initEvents();
+	Main.initCanvases();
+	Input.init();
+	
+	jscolor.init();
+	Yang.init();
+	
+	Sliders.init();
+	
+	
+	$(".button_cover").each(function(){
+		if($(this).attr("data-key") == "pencil"){
+			$(this).trigger("click");
+		}
+	});
+	
+	ContextMenu.init();
+	
+	window.onbeforeunload = function (e){
+	    e = e || window.event;
+	    var message = 'Unsaved edits will be lost.';
+	    if (e) e.returnValue = message;
+	    return message;
+	};
+	
+	Helper.init();
+	
+	
+});
+
+
+</script>
+
+<script src='http://www.google-analytics.com/ga.js' type='text/javascript'>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55633101-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</html>
+

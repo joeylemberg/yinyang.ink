@@ -1,0 +1,61 @@
+/* Copyright Joey Lemberg and other contributors.
+ Released under the MIT license; http://yinyang.ink/license */
+
+body{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select: none;user-select: none;}
+.user-selectable{-webkit-user-select:auto;-khtml-user-select:auto;-moz-user-select:auto;-ms-user-select:auto;-o-user-select: auto;user-select: auto;}
+
+#cursor_canvas, #helper-text-canvas, .no-pointers{pointer-events:none;}
+
+#picture{}
+.checkeredbg{background-image: url(chex.png); background-repeat: repeat;}
+.canvas_layer, #top_canvas, #units_marking_canvas{position:absolute;top:0px;left:0px;height:100%;width:100%;}
+
+#copyright_canvas{position:fixed;bottom:0;left:0;z-index:999999;}
+#copyright_canvas:hover{cursor:pointer;}
+
+
+.resize_handle{width:8px;height:8px;background-color:#ffffff;border:1px solid black;position:absolute;z-index:9010;}
+#top_left_resizer{top:-5px;left:-5px;}
+#top_right_resizer{top:-5px;right:-5px;}
+#bottom_left_resizer{bottom:-5px;left:-5px;}
+#bottom_right_resizer{bottom:-5px;right:-5px;}
+#top_resizer{left:50%;margin-left:-5px;top:-5px;}
+#bottom_resizer{left:50%;margin-left:-5px;bottom:-5px;}
+#left_resizer{top:50%;margin-top:-5px;left:-5px;}
+#right_resizer{top:50%;margin-top:-5px;right:-5px;}
+#top_left_resizer,#bottom_right_resizer{cursor:nwse-resize;}
+#top_right_resizer,#bottom_left_resizer{cursor:nesw-resize;}
+#top_resizer,#bottom_resizer{cursor:ns-resize;}
+#right_resizer,#left_resizer{cursor:ew-resize;}
+#bottom_right_rotater{bottom:-35px;right:-35px;}
+#bottom_left_rotater{bottom:-35px;left:-35px;}
+#top_right_rotater{top:-35px;right:-35px;}
+#top_left_rotater{top:-35px;left:-35px;}
+#top_rotater{left:50%;margin-left:-10px;top:-45px;}
+#bottom_rotater{left:50%;margin-left:-10px;bottom:-45px;}
+#left_rotater{top:50%;margin-top:-10px;left:-45px;}
+#right_rotater{top:50%;margin-top:-10px;right:-45px;}
+#mover_div{position:absolute;top:0px;left:0px;width:100%;height:100%;cursor:move;}
+#painting_mover{z-index:9000;position:absolute;cursor:move;display:none;top:0;left:0;width:100%;height:100%;}
+.painting_resizer{z-index:9001;position:absolute;display:none;}
+#painting_resizer_bottom{bottom:-2px;left:0;width:100%;height:4px;background-color:rgba(0,0,200,0.4);cursor:ns-resize;}
+#painting_resizer_right{bottom:0px;right:-2px;width:4px;height:100%;background-color:rgba(0,0,200,0.4);cursor:ew-resize;}
+#painting_resizer_bottom_right{z-index:9002;bottom:-4px;right:-4px;width:8px;height:8px;background-color:rgba(0,0,200,0.4);cursor:nwse-resize;}
+
+.rotate_handle{position:absolute;z-index:9010;cursor:alias;}
+
+.free_input{border:1px solid #848484;}
+
+#bottom_pic_resizer, #top_pic_resizer, #left_pic_resizer, #right_pic_resizer{position:absolute;display:none;background-color:rgba(0,0,200,0.5);z-index:999;border-radius:4px;}
+#top_pic_resizer, #bottom_pic_resizer{width:100%;height:8px;left:0%;cursor:ns-resize;}
+#left_pic_resizer, #right_pic_resizer{height:100%;width:8px;top:0%;cursor:ew-resize;}
+#right_pic_resizer{right:-8px;}
+#left_pic_resizer{left:-8px;}
+#top_pic_resizer{top:-8px;}
+#bottom_pic_resizer{bottom:-8px;}
+
+#corner_pic_resizer{cursor:nwse-resize;height:12px;width:12px;bottom:-12px;right:-12px;position:absolute;display:none;background-color:#00bfff;border:2px solid rgba(0,0,200,1);z-index:1000;border-radius:4px;}
+
+#dragged_canvas{position:absolute;}
+
+.greened_up{background-color:#349901}
