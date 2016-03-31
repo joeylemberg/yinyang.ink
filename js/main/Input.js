@@ -101,6 +101,26 @@ var Input = {
 		//gaton
 		//this.place = window.location.origin;
 		
+        $(document).bind("mousewheel", function(e){
+            var e = window.event || e;
+            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+            
+            var x0 = Yang.left;
+            var y0 = Yang.top;
+            var zoom0 = Yang.zoom;
+            
+            if(delta < 0){
+                $("#zoom_disp").val(100*Yang.zoom + 5).trigger("blur");
+            }else{
+                $("#zoom_disp").val(100*Yang.zoom - 5).trigger("blur");
+            }
+            
+            Yang.left = Math.round((x0 + Input.x * zoom0) - Input.x * Yang.zoom);
+            Yang.top = Math.round((y0 + Input.y * zoom0) - Input.y * Yang.zoom);
+            
+            Yang.placePic();
+        });
+        
 		$(document).mousedown(function(){
 			
 			if(!Input.contextHover){

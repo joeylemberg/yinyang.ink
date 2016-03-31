@@ -6,7 +6,6 @@ body{-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-
 
 #cursor_canvas, #helper-text-canvas, .no-pointers{pointer-events:none;}
 
-#picture{}
 .checkeredbg{background-image: url(chex.png); background-repeat: repeat;}
 .canvas_layer, #top_canvas, #units_marking_canvas{position:absolute;top:0px;left:0px;height:100%;width:100%;}
 

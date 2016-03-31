@@ -16,8 +16,8 @@ var Yang = {
 		});
 	},
 	newPic : function(){
-		var w = Math.min(Config.maxSize, Math.round($(window).width() * 0.75 * pxRatio));
-		var h = Math.min(Config.maxSize, Math.round($(window).height() * 0.75 * pxRatio));
+		var w = Math.min(Config.maxSize, Math.round($(window).width() * 0.65 * pxRatio));
+		var h = Math.min(Config.maxSize, Math.round($(window).height() * 0.65 * pxRatio));
 		Yang.setPicSize(w,h);
 		Yang.left = 110;
 		Yang.top = 110;
