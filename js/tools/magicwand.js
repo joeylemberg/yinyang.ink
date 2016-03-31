@@ -428,9 +428,9 @@ Tools.magicwand.draw = function(ctx){
 	ctx.lineWidth = 2;
 	ctx.strokeStyle = "#eaeaea";
 	ctx.moveTo(7,23);
-	ctx.lineTo(9,21);
+	ctx.lineTo(8,22);
 	ctx.moveTo(11,19);
-	ctx.lineTo(13,17);
+	ctx.lineTo(12,18);
 	ctx.moveTo(15,15);
 	ctx.lineTo(17,13);
 	ctx.stroke();
