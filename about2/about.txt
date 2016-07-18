@@ -1,3 +1,0 @@
-Introduction
-
-YinYangPaint is an HTML5 raster image editor.

@@ -28,20 +28,20 @@ Tools.about = {
 		cover += "<div id='about_content' style='margin-top:24px;'></div>";
 		cover += "</div>";
 		cover += "</div>";
-		
+
 		cover += "</div>";
 		$("body").prepend(cover);
-		
+
 		$(".about_canvas").each(function(){
 		var ctx = this.getContext("2d");
 			ctx.scale(0.9,0.9);
 			Tools.about.draw(ctx);
 		});
-		
+
 		$("#about_x_box").click(function(){
 			clearInterval(Tools.about.lilyInt);
 		});
-		
+
 		$(".about_page_tab").click(function(){
 			$(".active_about_tab").removeClass("active_about_tab");
 			$(this).addClass("active_about_tab");
@@ -71,10 +71,10 @@ Tools.about = {
 			}else{
 				clearInterval(Tools.about.lilyInt);
 			}
-			
-			
+
+
 		});
-		
+
 		this.pages.init();
 	},
 	click: function(){
@@ -84,8 +84,8 @@ Tools.about = {
 	},
 	pages: {
 		init: function(){
-			
-			
+
+
 			this.basics = "<h3>What is YinYangPaint?</h3>";
 			this.basics += "YinYangPaint is an image editor built around the HTML canvas.  It is much more than merely a demo, but is evidently not complete enough to compete with commercial image editors.<br/><br/>";
 			this.basics += "It seems inevitable that an in-browser image editor will rise to join the most popular graphics software.  YinYangPaint is not that application, but it is still quite capable and I hope you might find it useful";
@@ -135,8 +135,14 @@ Tools.about = {
 			this.tools += "Select a range of pixels of similar color.<br/><br/>";
 			this.tools += "<canvas width='30' height='30' class='about_tools_canvas' data-tool='dropper'></canvas> <b class='about_tool_title'>Dropper</b></br>";
 			this.tools += "Sample colors from pictures.<br/><br/>";*/
-			
-			this.more = '<div style="text-align:center">YinYangPaint is free with no ads, so if can spare it,<br/>please consider donating to the person who made this.<br><br>';
+
+
+			this.more = "This tool is: <ul><li>free to use</li><li>advertisement-free</li><li>collects no user data</li><li>doesn't try to sell anything</li></ul>";
+			this.more += '<br/>';
+			this.more += '<p>I previously solicited donations on this tab, but literally no one dontated as of July 18, 2016.</p>';
+
+			this.more += "<p>You can support YinYangPaint by taking initiative with the open source development process.  The original author of this thing (me) has long ago given up on profiting financially from this project.  At this time, the project needs developer love way more than $$$.  Eventually, cash will be useful to keep professional developers focused on a project, but as of this moment, simple developer attention on the project is what is most needed.</p>";
+			/*this.more = '<div style="text-align:center">YinYangPaint is free with no ads, so if can spare it,<br/>please consider donating to the person who made this.<br><br>';
 			this.more += '<br/>';
 			this.more += '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">';
 			this.more += '<input type="hidden" name="cmd" value="_s-xclick">';
@@ -146,7 +152,7 @@ Tools.about = {
 			this.more += '</form>';
 			this.more += '<img src="img/bitcoin-qr.png" style="padding:24px;background-color:white;"><br/>';
 			this.more += '<b style="background-color:#c4c4c4;padding:8px;display:inline-block;margin-bottom:16px;-moz-user-select: auto;-khtml-user-select: auto;-webkit-user-select: auto;-o-user-select: auto;" id="bitcoin-address">1KG8xKUinXBDjq3TTkizPUFvdvPnqfZVae</b>';
-			this.more += '</div>';
+			this.more += '</div>';*/
 		},
 		basics: "Hello World!"
 	}
